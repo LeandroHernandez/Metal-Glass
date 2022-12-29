@@ -1,0 +1,49 @@
+.header {
+    /* background: #1a334d; */
+    background: #171e52;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.header [nz-col] {
+    justify-content: center;
+    text-align: center;
+}
+
+.header [nz-col] button {
+    width: 180px;
+}
+
+.header h2 {
+    color: #ffffffff;
+    margin: 0;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+}
+
+.metalGlassLogo {
+    /* width: 100%; */
+    width: 200px;
+    height: 80px
+}
+
+/* .col-2 {
+    border-left: solid 1px rgb(194, 194, 194);
+} */
+
+#uploadFiles {
+    display: none;
+}
+
+.labelInputUploadFiles {
+    background: #171e52;
+    border-radius: 3px;
+    color: #ffffffff;
+    padding: 10px;
+}
+
+.labelInputUploadFiles:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px 0 rgb(196, 196, 196);
+}

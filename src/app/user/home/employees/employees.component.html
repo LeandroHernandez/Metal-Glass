@@ -1,0 +1,206 @@
+<!-- <p>employees works!</p> -->
+<!-- <p>{{ employees | json }}</p> -->
+<div
+  nz-row
+  nzAlign="middle"
+  [nzGutter]="[0, 0]"
+  nzJustify="space-between"
+  class="header"
+>
+  <!-- <div nz-col nzSpan="4">
+    <button nz-button nzType="primary" nzDanger nzSize="large" title="LogOut">
+      Cerrar seción
+    </button>
+  </div>
+  <div nz-col nzSpan="14">
+    <h2 *ngIf="user">Bienvenido {{ user.names }} {{ user.surnames }}</h2>
+  </div> -->
+  <div
+    nz-col
+    nzSpan="4"
+    nzXXl="4"
+    nzXl="4"
+    nzLg="5"
+    nzMd="7"
+    nzSm="9"
+    nzXs="24"
+  >
+    <img
+      [src]="
+        'https://firebasestorage.googleapis.com/v0/b/audio-visual-turno.appspot.com/o/MetalGlassLogo.jpeg?alt=media&token=354bf13d-f55c-46ef-bd7e-117c673fc4a2'
+      "
+      [alt]="'Logo de Metal Glass'"
+      title="Logo de Metal Glass"
+      class="metalGlassLogo"
+    />
+  </div>
+  <div
+    nz-col
+    nzSpan="20"
+    nzXXl="20"
+    nzXl="20"
+    nzLg="19"
+    nzMd="17"
+    nzSm="15"
+    nzXs="24"
+  >
+    <div nz-row nzAlign="middle" [nzGutter]="[0, 0]" nzJustify="space-around">
+      <div
+        nz-col
+        nzSpan="18"
+        nzXXl="18"
+        nzXl="18"
+        nzLg="16"
+        nzMd="24"
+        nzSm="24"
+        nzXs="24"
+      >
+        <!-- <h2 *ngIf="user">Bienvenido {{ user.names }} {{ user.surnames }}</h2> -->
+        <h2>Empleados</h2>
+      </div>
+      <div
+        nz-col
+        nzSpan="4"
+        nzXXl="4"
+        nzXl="4"
+        nzLg="6"
+        nzMd="24"
+        nzSm="24"
+        nzXs="24"
+      >
+        <button
+          nz-button
+          nzType="primary"
+          nzSize="large"
+          title="Back"
+          [routerLink]="['/admin/home']"
+        >
+          Volver a Home
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  nz-row
+  nzAlign="middle"
+  [nzGutter]="[0, 0]"
+  nzJustify="space-between"
+  class="employeesContentOptions"
+>
+  <div nz-col nzSpan="12">
+    <form
+      nz-form
+      [nzLayout]="'inline'"
+      [formGroup]="findEmployeeForm"
+      (ngSubmit)="submitfindEmployeeForm(employeesnameView)"
+      style="width: 100%"
+    >
+      <!-- <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+        <input
+          type="text"
+          nz-input
+          placeholder="Nombre de usuario"
+          formControlName="username"
+        />
+      </nz-input-group> -->
+      <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+        <!-- <input
+          nz-input
+          placeholder="input here"
+          formControlName="username"
+          [(ngModel)]="employeesnameView"
+          (input)="onChange($event, employeesnameView)"
+          [nzAutocomplete]="auto"
+        /> -->
+        <input
+          nz-input
+          placeholder="input here"
+          formControlName="username"
+          [(ngModel)]="employeesnameView"
+          (input)="onChange(employeesnameView)"
+          [nzAutocomplete]="auto"
+        />
+      </nz-input-group>
+      <ng-template #suffixIconButton>
+        <button
+          nz-button
+          nzType="primary"
+          type="submit"
+          title="search"
+          nzSearch
+        >
+          <span nz-icon nzType="search" nzTheme="outline"></span>
+        </button>
+      </ng-template>
+      <nz-autocomplete #auto>
+        <nz-auto-option
+          class="global-search-item"
+          *ngFor="let employee of employees"
+          [nzLabel]="employee.names + ' ' + employee.surnames"
+          [nzValue]="employee.names + ' ' + employee.surnames"
+        >
+          {{ employee.names + " " + employee.surnames }}
+        </nz-auto-option>
+      </nz-autocomplete>
+      <!-- <ng-template #suffixIconButton>
+        <button
+          nz-button
+          nzType="primary"
+          nzSearch
+          type="submit"
+          title="search"
+        >
+          <span nz-icon nzType="search"></span>
+        </button>
+      </ng-template> -->
+    </form>
+  </div>
+  <div nz-col nzSpan="4">
+    <button
+      nz-button
+      nzType="primary"
+      [routerLink]="['/admin/home/empleados/registro-empleado']"
+      class="registerEmployeeButton"
+    >
+      Registrar empleado
+    </button>
+  </div>
+</div>
+<div nz-row nzAlign="middle" [nzGutter]="[0, 0]" nzJustify="space-evenly">
+  <div nz-col *ngFor="let employee of employeesView">
+    <nz-card
+      nzHoverable
+      style="width: 300px"
+      [nzCover]="coverTemplate"
+      [routerLink]="['/admin/home/empleados/vista-empleado/', employee._id]"
+    >
+      <nz-card-meta
+        [nzTitle]="employee.names + ' ' + employee.surnames"
+      ></nz-card-meta>
+    </nz-card>
+    <ng-template #coverTemplate>
+      <!-- <img
+        alt="example"
+        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+      /> -->
+
+      <nz-carousel
+        nzAutoPlay
+        [nzEffect]="'scrollx'"
+        [nzLoop]="true"
+        style="width: 300px; height: 350px"
+      >
+        <!-- <div nz-carousel-content *ngFor="let photo of employee.photos"> -->
+        <img
+          *ngIf="employee.photos"
+          [src]="employee.photos[0].photoPath"
+          [alt]="employee.photos[0].name"
+          title="foto de {{ employee.names }} {{ employee.surnames }}"
+          style="width: 100%; height: 100%"
+        />
+        <!-- </div> -->
+      </nz-carousel>
+    </ng-template>
+  </div>
+</div>

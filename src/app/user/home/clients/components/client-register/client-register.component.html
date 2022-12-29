@@ -1,0 +1,192 @@
+<!-- <p>client-register works!</p> -->
+<div
+  nz-row
+  nzAlign="middle"
+  [nzGutter]="[0, 0]"
+  nzJustify="space-between"
+  class="header"
+>
+  <div
+    nz-col
+    nzSpan="4"
+    nzXXl="4"
+    nzXl="4"
+    nzLg="5"
+    nzMd="7"
+    nzSm="9"
+    nzXs="24"
+  >
+    <img
+      [src]="
+        'https://firebasestorage.googleapis.com/v0/b/audio-visual-turno.appspot.com/o/MetalGlassLogo.jpeg?alt=media&token=354bf13d-f55c-46ef-bd7e-117c673fc4a2'
+      "
+      [alt]="'Logo de Metal Glass'"
+      title="Logo de Metal Glass"
+      class="metalGlassLogo"
+    />
+  </div>
+  <div
+    nz-col
+    nzSpan="20"
+    nzXXl="20"
+    nzXl="20"
+    nzLg="19"
+    nzMd="17"
+    nzSm="15"
+    nzXs="24"
+  >
+    <div nz-row nzAlign="middle" [nzGutter]="[0, 0]" nzJustify="space-around">
+      <div
+        nz-col
+        nzSpan="18"
+        nzXXl="18"
+        nzXl="18"
+        nzLg="16"
+        nzMd="24"
+        nzSm="24"
+        nzXs="24"
+      >
+        <h2>Registrar cliente</h2>
+      </div>
+      <div
+        nz-col
+        nzSpan="4"
+        nzXXl="4"
+        nzXl="4"
+        nzLg="6"
+        nzMd="24"
+        nzSm="24"
+        nzXs="24"
+      >
+        <button
+          nz-button
+          nzType="primary"
+          nzSize="large"
+          title="Back"
+          [routerLink]="['/admin/home/clientes']"
+        >
+          Volver a Clientes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  nz-row
+  nzAlign="middle"
+  [nzGutter]="[0, 0]"
+  nzJustify="center"
+  class="content-row"
+>
+  <div nz-col nzSpan="22" class="content-col">
+    <!-- <nz-card [nzTitle]="headerCard"> -->
+    <form
+      nz-form
+      [formGroup]="registerClientForm"
+      (ngSubmit)="registerClient()"
+    >
+      <div nz-row nzAlign="top" [nzGutter]="[0.0]" nzJustify="space-between">
+        <div nz-col nzSpan="11" class="nz-col col-1">
+          <nz-form-item>
+            <nz-form-label nzSpan="24"
+              >Tipo de documento de documento</nz-form-label
+            >
+            <nz-form-control
+              nzErrorTip="!Porfavor ingresa tu tipo de documento¡"
+            >
+              <nz-select
+                formControlName="documentTypeId"
+                nzPlaceHolder="Mi tipo de documento"
+              >
+                <nz-option
+                  *ngFor="let documentType of documentTypes"
+                  [nzValue]="documentType._id"
+                  [nzLabel]="documentType.type"
+                ></nz-option>
+              </nz-select>
+              <ng-template #selectIcon>
+                <span nz-icon nzType="select" nzTheme="outline"></span>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label nzSpan="24">Numero de documento</nz-form-label>
+            <nz-form-control
+              nzHasFeedback
+              nzErrorTip="El numero de documento es requerido"
+            >
+              <input
+                nz-input
+                type="number"
+                formControlName="documentNumber"
+                placeholder="Numero de documento"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label nzSpan="24">Nombres del cliente</nz-form-label>
+            <nz-form-control
+              nzHasFeedback
+              nzErrorTip="Los del cliente son requeridos"
+            >
+              <input nz-input formControlName="names" placeholder="Nombres" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label nzSpan="24">Apellidos del cliente</nz-form-label>
+            <nz-form-control
+              nzHasFeedback
+              nzErrorTip="Los apellidos del cliente son requeridos "
+            >
+              <input
+                nz-input
+                formControlName="surnames"
+                placeholder="Apellidos"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label nzSpan="24">Numero de telefono</nz-form-label>
+            <nz-form-control
+              nzHasFeedback
+              nzErrorTip="El numero de telefono es requerido"
+            >
+              <input
+                nz-input
+                type="number"
+                formControlName="phoneNumber"
+                placeholder="Numero de telefono"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="11" class="nz-col col-2">
+          <nz-form-item>
+            <nz-form-label nzSpan="24">Correo del cliente</nz-form-label>
+            <nz-form-control nzHasFeedback>
+              <input
+                nz-input
+                type="email"
+                formControlName="email"
+                placeholder="Correo"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label nzSpan="24">Grado de cliente</nz-form-label>
+            <nz-form-control nzHasFeedback>
+              <input
+                nz-input
+                formControlName="customerGrade"
+                placeholder="Nombre de usario"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <button nz-button type="submit" nzType="primary">Registrar</button>
+    </form>
+
+    <!-- <ng-template #headerCard> <h1>Registrar empleado</h1></ng-template> -->
+  </div>
+</div>

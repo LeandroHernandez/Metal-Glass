@@ -1,0 +1,70 @@
+.header {
+  /* background: #1a334d; */
+  background: #171e52;
+  margin-bottom: 20px;
+  padding: 10px 0;
+}
+
+.header [nz-col] {
+  justify-content: center;
+  text-align: center;
+}
+
+.header [nz-col] button {
+  width: 180px;
+}
+
+.header h2 {
+  color: #ffffffff;
+  margin: 0;
+  justify-content: center;
+  text-align: center;
+  font-size: 30px;
+}
+
+.metalGlassLogo {
+  /* width: 100%; */
+  width: 200px;
+  height: 80px
+}
+
+/*  */
+.dynamic-delete-button {
+  cursor: pointer;
+  position: relative;
+  top: 4px;
+  font-size: 24px;
+  color: #999;
+  transition: all 0.3s;
+}
+
+.dynamic-delete-button:hover {
+  color: #777;
+}
+
+.passenger-input {
+  width: 100%;
+  margin-right: 8px;
+}
+
+[nz-form] {
+  width: 100%;
+}
+
+.add-button {
+  width: 100%;
+}
+
+.add-button {
+  margin: 24px 0 0 0;
+}
+
+.registerButton {
+  margin: 24px 0 ;
+}
+
+/* .selectedProductsCol { */
+.content-sale {
+  border: solid rgb(230, 230, 230) 1px;
+  padding: 24px 0 0 0;
+}
